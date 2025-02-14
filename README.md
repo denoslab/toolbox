@@ -14,13 +14,16 @@ By: Garth Johnson & others
 
 The purpose of this container image is to provide tools that can help diagnose issues and ease/simplify development struggles on alien envirnments.
 
-Additionally, this container image can easily used for:
+Additionally, this container image can be easily used for:
 
-- devlopment new container prototypes
-- debugging container builds and deployments
-- educational intents for container development/examples (i.e. workflows and devcontainers)
-
-You can find more at:
+- Development of new container prototypes
+- Debugging container builds and deployments
+- Educational intents for container development/examples (i.e., workflows and devcontainers)
+- Network diagnostics and packet analysis
+- Running automated tests in isolated environments
+- Benchmarking container performance
+- Rapid prototyping of infrastructure setups
+- You can find more at:
 
 - source: https://github.com/growlf/toolbox/
 - release images:
