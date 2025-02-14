@@ -6,7 +6,7 @@ ARG GIT_COMMIT_MESSAGE=unspecified
 ARG GIT_VERSION_HASH=unspecified
 
 # Install updates and docker
-RUN apt-get -yq update && apt-get -yq install \
+RUN apt-get update -yq && apt-get upgrade -yq && apt-get -yq install \
         curl \
         gnupg \
     && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
