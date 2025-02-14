@@ -3,7 +3,7 @@
 services:
   myapp:
     container_name: myapp
-    image: dockerstepbystep:latest
+    image: ghcr.io/growlf/toolbox:latest
     build: .
     ports:
       - "8080:8080"
