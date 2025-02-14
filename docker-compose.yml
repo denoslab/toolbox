@@ -17,6 +17,7 @@ services:
     - ${HOME}/.ssh:/home/ubuntu/.ssh
     - .:/src
     - /var/run/docker.sock:/var/run/docker.sock
+    - ./logs:/var/log/toolbox  # 🔹 New log volume
     network_mode: "host"
 
   # Example container with DooD and host file/net access
@@ -32,7 +33,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     network_mode: "host"
     
-    
   # Example of running the same image with different intent
   app2:
     image: ghcr.io/growlf/toolbox:latest
@@ -41,4 +41,7 @@ services:
     stdin_open: true
     tty: true
     command: ["/bin/bash"]
-    
+
+# 🔹 Ensure a log directory exists
+volumes:
+  logs:
