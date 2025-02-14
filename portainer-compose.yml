@@ -13,5 +13,4 @@ services:
     command: ["/bin/zsh"]
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
     network_mode: "host"
