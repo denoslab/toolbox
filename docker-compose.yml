@@ -1,14 +1,12 @@
 
 services:
   app:
-    build:
-      context: .            # Use the current directory for building the image
-      dockerfile: Dockerfile  # Path to the Dockerfile (ensure it's named correctly)
-    image: ghcr.io/growlf/toolbox:testing  # Modify to your image if needed
-    stdin_open: true          # Keep the stdin open for interactive sessions
-    tty: true                 # Allocate a pseudo-TTY
-    command: ["/bin/zsh"]     # Command to run (change this based on your app)
+    image: python:3.8-slim  # Use a public image from Docker Hub (Python 3.8)
+    stdin_open: true         # Keep the stdin open for interactive sessions
+    tty: true                # Allocate a pseudo-TTY
+    command: ["/bin/zsh"]    # Command to run (you can change this if needed)
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock  # Allow the container to communicate with Docker
-      - ./data:/app/data      # Example: Mapping a local folder to the container (modify as needed)
-    network_mode: "host"      # Network configuration (modify if necessary)
+      - /var/run/docker.sock:/var/run/docker.sock  # Mount the Docker socket
+    network_mode: "host"      # Use the host network (adjust if needed)
+    environment:
+      - ENV=development      # Set an environment variable if needed
