@@ -32,11 +32,12 @@ RUN apt-get -yq install --no-install-recommends \
         tree \
         lsof \
         fish \
+        curl \  # ✅ Added curl here
         && sh -c "curl -fsSL https://starship.rs/install.sh | bash -s -- --yes" \
         && apt-get clean -y \
         && rm -rf /var/lib/apt/lists/*
 
-# ensure that there is a place to mount the host files
+# Ensure that there is a place to mount the host files
 RUN mkdir /host
 
 # Set the working directory for installations and login
@@ -66,7 +67,10 @@ RUN echo $GIT_VERSION_HASH > GIT_VERSION_HASH.txt
 # Switch to the user now so that file ownership matches
 USER $USERNAME
 
-# Install ZSH, OhMyZSH, themes and plugins
+# Add a custom network diagnostic script
+ADD --chown=1000:1000 --chmod=+x src/net_check.sh .
+
+# Install ZSH, OhMyZSH, themes, and plugins
 ADD --chown=1000:1000  --chmod=+x src/zsh-in-docker.sh .
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 RUN ./zsh-in-docker.sh \
@@ -99,5 +103,5 @@ ADD --chown=1000:1000 --chmod=+x https://private-sw-downloads.s3.amazonaws.com/a
 ADD --chown=1000:1000 --chmod=+x src/test_net.sh .
 ADD --chown=1000:1000 src/nodes.list .
 
-# Set default command
-CMD ["/bin/zsh"]
+# Change default shell to Bash instead of ZSH
+CMD ["/bin/bash"]
