@@ -3,7 +3,7 @@ services:
 
   # Building and testing environment
   app:
-    image: ghcr.io/growlf/toolbox:testing
+    image: ghcr.io/growlf/toolbox:latest
     stdin_open: true
     tty: true
     command: ["/bin/zsh"]
