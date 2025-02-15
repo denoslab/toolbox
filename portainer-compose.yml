@@ -3,7 +3,7 @@ services:
 
   # Building and testing environment
   app:
-    image: ghcr.io/alymasani/toolbox:ensf400_w25_alymasani
+    image: ghcr.io/growlf/toolbox:testing
     stdin_open: true
     tty: true
     command: ["/bin/zsh"]
