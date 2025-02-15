@@ -1,12 +1,31 @@
-version: '3.8'
-services:
+# version: '3.8'
+# services:
 
-  # Building and testing environment
-  app:
+#   # Building and testing environment
+#   app:
+#     image: portainer/portainer-ce
+#     stdin_open: true
+#     tty: true
+#     command: ["/bin/zsh"]
+#     volumes:
+#       - /var/run/docker.sock:/var/run/docker.sock
+#     network_mode: "host"
+
+version: '3.8'
+
+services:
+  portainer:
     image: portainer/portainer-ce
-    stdin_open: true
-    tty: true
-    command: ["/bin/zsh"]
+    container_name: toolbox_container
+    ports:
+      - "9000:9000"
+      - "8000:8000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    network_mode: "host"
+      - portainer_data:/data # Add this line to persist Portainer
+    restart: always
+
+volumes:
+  portainer_data:
+
+
